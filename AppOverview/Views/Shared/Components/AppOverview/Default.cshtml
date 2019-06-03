@@ -1,0 +1,12 @@
+﻿@model IEnumerable<IEnumerable<AppModel>>
+<div class="container" style="max-width: 1400px;">
+    @foreach (IEnumerable<AppModel> appRow in Model)
+    {
+        <div class="row" style="margin-bottom: 50px">
+            @foreach (AppModel app in appRow)
+            {
+                <partial name="../Partials/AppCard" model="app" />
+            }
+        </div>
+    }
+</div>

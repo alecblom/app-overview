@@ -1,0 +1,37 @@
+﻿@model AppModel
+<div class="col-sm">
+    <div class="card app-card">
+        <a href="@Model.MoreInfoUrl" target="_blank" style="background-image: url(@Model.BackgroundUrl);" class="app-card-header-bg container">
+            <img src="@Model.IconUrl" class="app-card-header-icon" />
+            <img src="@Model.ImageUrl" class="app-card-header-logo" />
+        </a>
+        <div class="card-body">
+            <div class="card-title">
+                <h5 class="app-card-title">@Html.DisplayFor(x => x.Name)</h5>
+            </div>
+            <div class="container">
+                <a class="btn text-white app-card-button" href="@Model.PortalUrl" target="_blank">To Portal</a>
+                <a class="btn text-white app-card-button" href="@Model.MoreInfoUrl" target="_blank">More Info</a>
+            </div>
+        </div>
+        <div class="container" style="padding: 0 0 15px 0">
+            <a class="col-sm" href="@Model.NewsUrl" target="_blank">What's new?</a>
+            <a class="col-sm" href="@Model.KbUrl" target="_blank">Knowledge Base</a>
+        </div>
+        <div class="faq-accordion accordion" id="faq-accordion-@Model.ID">
+            <a class="btn text-white faq-accordion-header" id="faq-heading-@Model.ID" data-toggle="collapse" data-target="#faq-@Model.ID" aria-expanded="false" aria-controls="faq-@Model.ID">
+                      FAQ
+            </a>
+            <div id="faq-@Model.ID" class="collapse faq-item-question" aria-labelledby="faq-heading-@Model.ID" data-parent="#faq-accordion-@Model.ID">
+                <ul class="list-group list-group-flush">
+                    @foreach (FaqItem faq in Model.FaqItems)
+                    {
+                        <a class="btn faq-item-question list-group-item" href="@faq.Url" target="_blank">
+                            @faq.Question
+                        </a>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
